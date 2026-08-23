@@ -1,6 +1,6 @@
 /* Mapa sebe — service worker */
-var CACHE = "zjh-pwa-v40";
-var SHELL = ["./","./index.html","./manifest.webmanifest","./icon-192.png","./icon-512.png","./mapa.html","./quests.json"];
+var CACHE = "zjh-pwa-v48";
+var SHELL = ["./","./index.html","./manifest.webmanifest","./icon-192.png","./icon-512.png","./quests.json"];
 
 self.addEventListener("install", function(e){
   e.waitUntil(caches.open(CACHE).then(function(c){ return c.addAll(SHELL); }));
