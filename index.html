@@ -46,6 +46,46 @@
   #dateLabel .p{font-family:'DM Mono',monospace;font-size:9.5px;color:var(--muted);margin-top:2px}
   #todayBtn{width:auto!important;padding:0 12px;font-family:'DM Mono',monospace;font-size:10px!important}
 
+  /* ===== Zápis · měsíční tabulka ===== */
+  #zapisMode{display:flex;gap:6px;margin-bottom:12px;background:var(--bg-soft);border:1px solid var(--line);
+    border-radius:11px;padding:4px}
+  #zapisMode button{flex:1;background:none;border:none;border-radius:8px;padding:8px 0;cursor:pointer;
+    font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  #zapisMode button.on{background:var(--panel);color:var(--gold);box-shadow:0 1px 3px rgba(0,0,0,.06)}
+  #gridNav{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  #gridNav button{background:var(--panel);border:1px solid var(--line);color:var(--text);
+    border-radius:9px;width:40px;height:40px;font-size:16px;cursor:pointer}
+  #gToday{width:auto!important;padding:0 12px;font-family:'DM Mono',monospace;font-size:10px!important}
+  #gLbl{flex:1;text-align:center;font-weight:800;font-size:15px}
+  .g-hint{font-size:11px;color:var(--muted);font-style:italic;margin-bottom:10px;line-height:1.4}
+  #gridWrap{overflow:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px;
+    background:var(--panel);max-height:calc(100vh - 260px)}
+  #monthGrid{border-collapse:separate;border-spacing:0;font-family:'DM Mono',monospace;font-size:11px}
+  #monthGrid th,#monthGrid td{border-right:1px solid rgba(232,225,211,.7);border-bottom:1px solid rgba(232,225,211,.7);
+    min-width:30px;width:30px;height:30px;text-align:center;padding:0}
+  #monthGrid .nm{position:sticky;left:0;z-index:2;background:var(--panel);text-align:left;padding:0 8px;
+    min-width:112px;max-width:112px;width:112px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    font-family:'Syne',sans-serif;font-size:11.5px;font-weight:700}
+  #monthGrid thead th{position:sticky;top:0;z-index:3;background:var(--bg-soft);font-weight:500;cursor:pointer;line-height:1.1}
+  #monthGrid thead th .wd{display:block;font-size:8px;color:var(--muted)}
+  #monthGrid thead th.nm{z-index:4;cursor:default}
+  #monthGrid tr.ar td{background:var(--bg-soft);height:24px;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  #monthGrid tr.ar td.nm{font-family:'DM Mono',monospace;font-weight:500;font-size:9.5px;background:var(--bg-soft)}
+  #monthGrid tr.ar .dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:0}
+  #monthGrid td.c{cursor:pointer;color:#FBFAF6;font-weight:700;user-select:none;-webkit-user-select:none}
+  #monthGrid td.c.on{background:var(--gold)}
+  #monthGrid td.c.wk{color:var(--gold)}
+  #monthGrid td.c.wk.on{color:#FBFAF6}
+  #monthGrid .we{background:rgba(245,241,233,.6)}
+  #monthGrid .mon{border-left:2px solid var(--line)}
+  #monthGrid .td-today{box-shadow:inset 0 0 0 2px var(--edge)}
+  #monthGrid .fut{opacity:.45}
+  #monthGrid td.w{cursor:pointer;color:var(--text);font-size:10.5px}
+  #monthGrid td.w.on{background:rgba(169,130,44,.16);color:var(--gold);font-weight:700}
+  #monthGrid tr.sum td{font-size:9.5px;color:var(--muted);background:var(--bg-soft)}
+  #monthGrid tr.sum td.nm{font-family:'DM Mono',monospace;font-weight:500}
+  #monthGrid .nm small{font-weight:400;color:var(--muted);font-size:9px;margin-left:4px}
+
   #dayBar{height:6px;background:var(--panel);border-radius:99px;overflow:hidden;margin-bottom:16px}
   #dayBar div{height:100%;background:linear-gradient(90deg,var(--edge),var(--gold));width:0%;
     border-radius:99px;transition:width .3s}
@@ -56,6 +96,13 @@
   .area .dot{width:9px;height:9px;border-radius:50%}
   .area .head h2{font-size:13px;font-weight:800;letter-spacing:.03em;flex:1}
   .area .head .cnt{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted)}
+  .area .head{cursor:pointer;user-select:none;-webkit-user-select:none}
+  .area .head .chev{font-size:11px;color:var(--muted);transition:transform .2s;width:14px;text-align:center}
+  .area.closed .head .chev{transform:rotate(-90deg)}
+  .area.closed .head{border-bottom:none}
+  .area.closed .habit{display:none}
+  .area .head .cnt.all{color:var(--gold);font-weight:500}
+  .swipe-hint{text-align:center;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--muted);margin:-8px 0 12px}
   .habit{display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid rgba(42,42,58,.5);cursor:pointer}
   .habit:last-child{border-bottom:none}
   .habit:active{background:rgba(201,169,78,.05)}
@@ -65,7 +112,8 @@
   .habit .hname{flex:1;font-size:13.5px;font-weight:700}
   .hstar{color:var(--gold);font-size:12px;margin-right:5px;vertical-align:1px}
   .hmotiv{font-size:12px;font-style:italic;color:var(--muted);padding:2px 6px 9px 44px;margin-top:-4px}
-  .habit.done .hname{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(139,135,120,.5)}
+  .habit.done{background:rgba(169,130,44,.07)}
+  .habit.done .hname{color:var(--text)}
   .habit .hstreak{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted)}
   .habit .hstreak.hot{color:var(--gold)}
   /* M0b — statistiky vytrvalosti v Oblastech */
@@ -608,12 +656,27 @@
 
 <header>
   <h1>Mapa sebe</h1>
-  <div class="sub">Zápis dne · verze 54</div>
+  <div class="sub">Zápis dne · verze 56</div>
 </header>
 
 <main>
   <!-- ============ ZÁPIS ============ -->
   <section class="view" id="view-zapis">
+    <div id="zapisMode">
+      <button data-m="den" class="on">Den</button>
+      <button data-m="mesic">Měsíc · tabulka</button>
+    </div>
+    <div id="monthMode" style="display:none">
+      <div id="gridNav">
+        <button id="gPrev" aria-label="Předchozí měsíc">‹</button>
+        <div id="gLbl"></div>
+        <button id="gToday">TENTO</button>
+        <button id="gNext" aria-label="Další měsíc">›</button>
+      </div>
+      <div class="g-hint">Klepnutím na buňku zapíšeš / zrušíš. Úrovně (Strava) se přepínají 1→2→3→nic. U práce zadáš hodiny. Klepnutím na číslo dne otevřeš daný den.</div>
+      <div id="gridWrap"><table id="monthGrid"></table></div>
+    </div>
+    <div id="dayMode">
     <div id="dateNav">
       <button id="prevDay" aria-label="Předchozí den">‹</button>
       <div id="dateLabel"><div class="d"></div><div class="p"></div></div>
@@ -621,6 +684,7 @@
       <button id="nextDay" aria-label="Další den">›</button>
     </div>
     <div id="dayBar"><div></div></div>
+    <div class="swipe-hint">← přejeď prstem pro jiný den →</div>
     <div id="habitList"></div>
     <div id="noteBox">
       <label for="dayNote">Poznámka dne</label>
@@ -638,6 +702,7 @@
       </div>
       <div id="workList"></div>
     </div>
+    </div><!-- /dayMode -->
   </section>
 
   <!-- ============ PŘEHLED ============ -->
@@ -649,7 +714,8 @@
     </div>
     <div class="citat-dne" id="citatDne"></div>
     <div class="card" id="chakraCard" style="background:#FBFAF6">
-      <div class="soul-tabs" id="soulTabs">
+      <!-- Tým a Strážci dočasně skryté (v55) — kód zůstává, zapnout = smazat style="display:none" -->
+      <div class="soul-tabs" id="soulTabs" style="display:none">
         <button class="soul-tab on" data-soul="ty">Ty</button>
         <button class="soul-tab" data-soul="tym">Tým</button>
         <button class="soul-tab" data-soul="strazci">Strážci</button>
@@ -1500,9 +1566,10 @@ function renderEntry(){
     hs.sort(function(x,y){ return (y.main?1:0)-(x.main?1:0); });  /* hlavní návyky první */
     if(!hs.length) return;
     var done = hs.filter(function(h){ return isDone(selDate,h.id); }).length;
-    html += '<div class="area">'+
-      '<div class="head"><span class="dot" style="background:'+a.color+'"></span>'+
-      '<h2>'+esc(a.name)+'</h2><span class="cnt">'+done+' / '+hs.length+'</span></div>';
+    var all = done===hs.length;
+    html += '<div class="area'+(areaClosed[a.id]?" closed":"")+'" data-a="'+esc(a.id)+'">'+
+      '<div class="head"><span class="chev">▾</span><span class="dot" style="background:'+a.color+'"></span>'+
+      '<h2>'+esc(a.name)+'</h2><span class="cnt'+(all?" all":"")+'">'+(all?"✓ hotovo":done+' / '+hs.length)+'</span></div>';
     hs.forEach(function(h){
       var v = val(selDate,h.id);
       var on = v>=1;
@@ -1524,7 +1591,6 @@ function renderEntry(){
         (h.type==="weekly" ? '<span class="badge'+(thisWeekCount(h.id)>=(+h.weeklyTarget||1)?" ok":"")+'">TÝDNĚ '+thisWeekCount(h.id)+'/'+(+h.weeklyTarget||1)+'</span>' : '')+
         '<div class="hstreak'+(st>=7?" hot":"")+'">'+(st>0 ? "🔥"+st+(si.braked?" 🛟":"") : "")+'</div>'+
         '</div>';
-      if(h.main){ var mv=habitMotiv(h); if(mv) html += '<div class="hmotiv">„'+esc(mv)+'"</div>'; }
     });
     html += '</div>';
   });
@@ -1534,7 +1600,17 @@ function renderEntry(){
   renderWheel(); renderWorkList();
 }
 
+var areaClosed = {};
+try{ areaClosed = JSON.parse(localStorage.getItem("zjh-ui-closed")) || {}; }catch(e){}
 habitListEl.addEventListener("click", function(ev){
+  var head = ev.target.closest(".area .head");
+  if(head){
+    var aid = head.parentNode.getAttribute("data-a");
+    areaClosed[aid] = !areaClosed[aid];
+    try{ localStorage.setItem("zjh-ui-closed", JSON.stringify(areaClosed)); }catch(e){}
+    head.parentNode.classList.toggle("closed", !!areaClosed[aid]);
+    return;
+  }
   var row = ev.target.closest(".habit");
   if(!row) return;
   var hid = row.getAttribute("data-h");
@@ -1546,6 +1622,7 @@ habitListEl.addEventListener("click", function(ev){
     if(row.classList.contains("lvls")) return; /* úrovňový návyk jen přes pilulky */
     toggle(selDate, hid);
   }
+  if(navigator.vibrate) try{ navigator.vibrate(8); }catch(e){}
   renderEntry();
 });
 
@@ -1716,6 +1793,188 @@ document.getElementById("nextDay").addEventListener("click", function(){
 });
 document.getElementById("todayBtn").addEventListener("click", function(){
   selDate = todayISO(); renderEntry();
+});
+/* přejetí prstem doleva/doprava = další/předchozí den */
+(function(){
+  var box = document.getElementById("dayMode"), sx=null, sy=null;
+  box.addEventListener("touchstart", function(e){
+    if(e.target.closest("#projWheel,textarea,input")){ sx=null; return; }
+    sx=e.touches[0].clientX; sy=e.touches[0].clientY;
+  }, {passive:true});
+  box.addEventListener("touchend", function(e){
+    if(sx===null) return;
+    var dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy; sx=null;
+    if(Math.abs(dx)>70 && Math.abs(dx)>2*Math.abs(dy)){
+      selDate = shiftDate(selDate, dx<0 ? 1 : -1); renderEntry();
+    }
+  }, {passive:true});
+})();
+
+/* =====================================================================
+   ZÁPIS · MĚSÍČNÍ TABULKA — dopisování zpětně jako v Excelu
+   (stejná data jako denní zápis: state.records[ISO][habitId], ._work)
+   ===================================================================== */
+var zapisMode = "den";
+var gridY = +todayISO().slice(0,4), gridM = +todayISO().slice(5,7); /* M = 1..12 */
+var MONTHS_NOM = ["Leden","Únor","Březen","Duben","Květen","Červen","Červenec","Srpen","Září","Říjen","Listopad","Prosinec"];
+var WD_SHORT = ["Ne","Po","Út","St","Čt","Pá","So"];
+
+function setZapisMode(m){
+  zapisMode = m;
+  document.querySelectorAll("#zapisMode button").forEach(function(b){
+    b.classList.toggle("on", b.getAttribute("data-m")===m);
+  });
+  document.getElementById("dayMode").style.display = (m==="den") ? "" : "none";
+  document.getElementById("monthMode").style.display = (m==="mesic") ? "" : "none";
+  if(m==="mesic"){ gridY = +selDate.slice(0,4); gridM = +selDate.slice(5,7); renderGrid(); }
+  else renderEntry();
+}
+document.getElementById("zapisMode").addEventListener("click", function(ev){
+  var b = ev.target.closest("button"); if(b) setZapisMode(b.getAttribute("data-m"));
+});
+
+function gridDays(){
+  var n = new Date(gridY, gridM, 0).getDate(), out = [];
+  for(var d=1; d<=n; d++) out.push(gridY+"-"+p2(gridM)+"-"+p2(d));
+  return out;
+}
+function workHoursFor(date, pid){
+  return workEntries(date).reduce(function(s,e){ return s + (e.pid===pid ? (+e.h||0) : 0); }, 0);
+}
+function fmtH(h){ return String(Math.round(h*100)/100).replace(".",","); }
+
+function renderGrid(){
+  var days = gridDays(), today = todayISO();
+  document.getElementById("gLbl").textContent = MONTHS_NOM[gridM-1]+" "+gridY;
+  function cls(iso){
+    var wd = fromISO(iso).getDay(), c = [];
+    if(wd===0 || wd===6) c.push("we");
+    if(wd===1) c.push("mon");
+    if(iso===today) c.push("td-today");
+    if(iso>today) c.push("fut");
+    return c.join(" ");
+  }
+  var h = '<thead><tr><th class="nm">'+MONTHS_NOM[gridM-1]+'</th>';
+  days.forEach(function(iso){
+    h += '<th class="'+cls(iso)+'" data-day="'+iso+'">'+(+iso.slice(8))+
+      '<span class="wd">'+WD_SHORT[fromISO(iso).getDay()]+'</span></th>';
+  });
+  h += '</tr></thead><tbody>';
+
+  AREAS.forEach(function(a){
+    var hs = state.habits.filter(function(x){ return x.area===a.id; });
+    if(!hs.length) return;
+    h += '<tr class="ar"><td class="nm"><span class="dot" style="background:'+a.color+'"></span>'+esc(a.name)+'</td>'+
+      days.map(function(iso){ return '<td class="'+cls(iso)+'"></td>'; }).join("")+'</tr>';
+    hs.forEach(function(x){
+      h += '<tr><td class="nm" title="'+esc(x.name)+'">'+esc(x.name)+'</td>';
+      days.forEach(function(iso){
+        var v = val(iso, x.id);
+        var txt = (x.scoring==="levels") ? (v>=1 ? v : "") : (v>=1 ? "✓" : "");
+        h += '<td class="c '+cls(iso)+(v>=1?" on":"")+(x.scoring==="levels"?" lv":"")+'" data-d="'+iso+'" data-h="'+esc(x.id)+'">'+txt+'</td>';
+      });
+      h += '</tr>';
+    });
+  });
+
+  /* souhrnný řádek — % splnění dne (stejný výpočet jako lišta v denním zápisu) */
+  h += '<tr class="sum"><td class="nm">Splněno %</td>'+days.map(function(iso){
+    var p = Math.round(dayPct(iso));
+    return '<td class="'+cls(iso)+'">'+(p>0?p:"")+'</td>';
+  }).join("")+'</tr>';
+
+  /* PRÁCE — aktivní projekty + všechny, které mají v měsíci zapsané hodiny */
+  var used = {};
+  days.forEach(function(iso){ workEntries(iso).forEach(function(e){ used[e.pid]=1; }); });
+  var projs = state.projects.filter(function(p){ return !p.done || used[p.id] || gridExtraProj[p.id]; });
+  /* hodiny k projektu, který mezitím zmizel ze seznamu */
+  Object.keys(used).forEach(function(pid){ if(!projById(pid)) projs.push({id:pid, name:"(smazaný projekt)", firma:""}); });
+  var showDone = state.projects.filter(function(p){ return p.done && !used[p.id] && !gridExtraProj[p.id]; });
+
+  h += '<tr class="ar"><td class="nm"><span class="dot" style="background:var(--gold)"></span>Práce · hodiny</td>'+
+    days.map(function(iso){ return '<td class="'+cls(iso)+'"></td>'; }).join("")+'</tr>';
+  if(!projs.length){
+    h += '<tr><td class="nm" style="color:var(--muted);font-weight:400">Žádné projekty</td>'+
+      days.map(function(iso){ return '<td class="'+cls(iso)+'"></td>'; }).join("")+'</tr>';
+  }
+  projs.forEach(function(p){
+    var tot = 0;
+    var cells = days.map(function(iso){
+      var wh = workHoursFor(iso, p.id); tot += wh;
+      return '<td class="w '+cls(iso)+(wh>0?" on":"")+'" data-d="'+iso+'" data-p="'+esc(p.id)+'">'+(wh>0?fmtH(wh):"")+'</td>';
+    }).join("");
+    h += '<tr><td class="nm" title="'+esc(p.name+(p.firma?" · "+p.firma:""))+'">'+esc(p.name)+
+      (tot>0?'<small>'+fmtH(tot)+' h</small>':'')+'</td>'+cells+'</tr>';
+  });
+  if(showDone.length){
+    h += '<tr><td class="nm" id="gAddDone" style="color:var(--gold);font-weight:500;cursor:pointer">+ dokončený projekt…</td>'+
+      days.map(function(iso){ return '<td class="'+cls(iso)+'"></td>'; }).join("")+'</tr>';
+  }
+  h += '<tr class="sum"><td class="nm">Σ hodin</td>'+days.map(function(iso){
+    var s = workEntries(iso).reduce(function(a,e){ return a+(+e.h||0); },0);
+    return '<td class="'+cls(iso)+'">'+(s>0?fmtH(s):"")+'</td>';
+  }).join("")+'</tr>';
+
+  h += '</tbody>';
+  document.getElementById("monthGrid").innerHTML = h;
+}
+
+var gridExtraProj = {}; /* dokončené projekty dočasně zobrazené v tabulce */
+
+function setWorkHours(date, pid, hours){
+  var list = workEntries(date).filter(function(e){ return e.pid!==pid; });
+  if(hours>0) list.push({pid:pid, h:hours});
+  if(!state.records[date]) state.records[date]={};
+  if(list.length) state.records[date]._work = list;
+  else delete state.records[date]._work;
+  if(!Object.keys(state.records[date]).length) delete state.records[date];
+  save();
+}
+
+document.getElementById("monthGrid").addEventListener("click", function(ev){
+  var th = ev.target.closest("th[data-day]");
+  if(th){ selDate = th.getAttribute("data-day"); setZapisMode("den"); return; }
+  if(ev.target.closest("#gAddDone")){
+    var done = state.projects.filter(function(p){ return p.done && !gridExtraProj[p.id]; });
+    var msg = "Číslo dokončeného projektu, který chceš zobrazit:\n"+done.map(function(p,i){
+      return (i+1)+") "+p.name+(p.firma?" · "+p.firma:""); }).join("\n");
+    var k = parseInt(prompt(msg, "1"),10);
+    if(k>=1 && k<=done.length){ gridExtraProj[done[k-1].id]=1; renderGrid(); }
+    return;
+  }
+  var td = ev.target.closest("td[data-d]"); if(!td) return;
+  var d = td.getAttribute("data-d");
+  if(td.hasAttribute("data-h")){
+    var hid = td.getAttribute("data-h");
+    var habit = state.habits.filter(function(x){ return x.id===hid; })[0];
+    if(habit && habit.scoring==="levels"){
+      var v = val(d, hid);
+      setVal(d, hid, v>=3 ? 0 : v+1);
+    }else toggle(d, hid);
+    renderGrid();
+    return;
+  }
+  if(td.hasAttribute("data-p")){
+    var pid = td.getAttribute("data-p"), p = projById(pid);
+    var cur = workHoursFor(d, pid);
+    var dd = fromISO(d);
+    var inp = prompt((p?p.name:"Projekt")+" · "+dd.getDate()+". "+MONTHS[dd.getMonth()]+"\nHodiny (0 nebo prázdné = smazat):",
+      cur>0 ? fmtH(cur) : "");
+    if(inp===null) return;
+    var hrs = parseFloat(String(inp).replace(",","."));
+    if(isNaN(hrs) || hrs<0) hrs = 0;
+    setWorkHours(d, pid, hrs);
+    renderGrid();
+  }
+});
+document.getElementById("gPrev").addEventListener("click", function(){
+  gridM--; if(gridM<1){ gridM=12; gridY--; } renderGrid();
+});
+document.getElementById("gNext").addEventListener("click", function(){
+  gridM++; if(gridM>12){ gridM=1; gridY++; } renderGrid();
+});
+document.getElementById("gToday").addEventListener("click", function(){
+  gridY = +todayISO().slice(0,4); gridM = +todayISO().slice(5,7); renderGrid();
 });
 
 /* =====================================================================
@@ -3275,7 +3534,7 @@ document.querySelectorAll("nav button").forEach(function(b){
     if(v==="prehled") renderOverview();
     if(v==="oblasti") renderOblasti();
     if(v==="nastaveni") renderSettings();
-    if(v==="zapis") renderEntry();
+    if(v==="zapis"){ if(zapisMode==="mesic") renderGrid(); else renderEntry(); }
   });
 });
 
